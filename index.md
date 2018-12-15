@@ -55,10 +55,10 @@ vh:相对于视窗的高度;视窗高度是100vh
 ### 对于JavaScript,JQuery记录
 ```markdown
 1.js数据类型
-	字符串(String),数值(Number),布尔值(Boolean),对象(Object),null,undefined;
-		ES6引入了一种新的原始数据类型Symbol,表示独一无二.
-		let str = Symbol();
-		typeof str  //symbol
+字符串(String),数值(Number),布尔值(Boolean),对象(Object),null,undefined;
+ ES6引入了一种新的原始数据类型Symbol,表示独一无二.
+ let str = Symbol();
+ typeof str  //symbol
 2.$.extend() 函数将一个或者多个对象的内容合并到目标对象;
 ```
 
