@@ -1,9 +1,7 @@
-## 欢迎来到GitHub页面
-
-您可以使用[GitHub上的编辑器](https://github.com/17633884630/17633884630.github.io/edit/master/index.md)在Markdown文件中维护和预览网站的内容。
-
-当您提交到这个存储库时，GitHub页面将运行[Jekyll](https://jekyllrb.com/)，从标记文件中的内容重新构建站点中的页面。
-
+## 知识点记录
+```markdown
+1.template.default.import.funName = function(value){...}   funName使用 {|分隔符}
+```
 ### Markdown
 
 Markdown是一种轻量级且易于使用的语法，用于为您的文章设计样式。它包括以下约定
