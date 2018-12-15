@@ -1,15 +1,15 @@
-## Welcome to GitHub Pages
+## 欢迎来到GitHub页面
 
-You can use the [editor on GitHub](https://github.com/17633884630/17633884630.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+您可以使用[GitHub上的编辑器](https://github.com/17633884630/17633884630.github.io/edit/master/index.md)在Markdown文件中维护和预览网站的内容。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+当您提交到这个存储库时，GitHub页面将运行[Jekyll](https://jekyllrb.com/)，从标记文件中的内容重新构建站点中的页面。
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Markdown是一种轻量级且易于使用的语法，用于为您的文章设计样式。它包括以下约定
 
 ```markdown
-Syntax highlighted code block
+语法高亮代码块
 
 # Header 1
 ## Header 2
@@ -26,12 +26,11 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
 
 ### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/17633884630/17633884630.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
+您的页面站点将使用您在[存储库设置]中选择的Jekyll主题的布局和样式(https://github.com/17633884630/17633884630.github.io/settings)。这个主题的名称保存在Jekyll ' _config中。yml的配置文件。
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+页面有问题吗?查看我们的[文档](https://help.github.com/categories/github-pages-basics/)或[联系人支持](https://github.com/contact)，我们将帮助您进行分类.
