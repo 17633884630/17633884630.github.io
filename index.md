@@ -41,14 +41,14 @@ em:根据使用它的元素大小决定;使用他的元素有18px,10em将等于 
 vw:相对于视窗的宽度;视窗宽度是100vw
 vh:相对于视窗的高度;视窗高度是100vh
 ```
-### vue研究记录
+### VUE记录
 ```markdown
 1.vue跳转传参问题:
   this.$router.push({name:'/',params:{data:data}})  //链接上不显示
   this.$router.push({path:'/',query:{data:data}})   //链接显示
   this.$router.push({name:'/',params:{data:data},query:{data:data}})   //链接显示query.data
 ```
-### 对于JavaScript学习
+### 对于JavaScript记录
 
 
 ### 问题反馈
