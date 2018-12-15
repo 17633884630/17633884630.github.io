@@ -2,7 +2,9 @@
 ```markdown
 1.template.default.import.funName = function(value){...}  
   funName使用 {|分隔符}
-   
+2.var obj = {}
+  obj['id_'+ id] = data.id	(存)
+  let id = obj['id_'+ id]   (取)
 ```
 ### Markdown
 
@@ -32,5 +34,10 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 
 
 ### vue研究记录
-
+```markdown
+1.vue调整问题:
+  this.$router.push({name:'/',params:{data:data}})  //链接上不显示
+  this.$router.push({path:'/',query:{data:data}})   //链接显示
+  this.$router.push({name:'/',params:{data:data},query:{data:data}})   //链接显示query.data
+```
 
