@@ -1,6 +1,8 @@
 ## 知识点记录
 ```markdown
-1.template.default.import.funName = function(value){...}   funName使用 {|分隔符}
+1.template.default.import.funName = function(value){...}  
+  funName使用 {|分隔符}
+   
 ```
 ### Markdown
 
