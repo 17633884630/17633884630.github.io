@@ -7,9 +7,7 @@
   let id = obj['id_'+ id]   (取)
 ```
 ### Markdown
-
 Markdown是一种轻量级且易于使用的语法，用于为您的文章设计样式。它包括以下约定
-
 ```markdown
 语法高亮代码块
 
@@ -45,11 +43,14 @@ vh:相对于视窗的高度;视窗高度是100vh
 ```
 ### vue研究记录
 ```markdown
-1.vue调整问题:
+1.vue跳转传参问题:
   this.$router.push({name:'/',params:{data:data}})  //链接上不显示
   this.$router.push({path:'/',query:{data:data}})   //链接显示
   this.$router.push({name:'/',params:{data:data},query:{data:data}})   //链接显示query.data
 ```
+### 对于JavaScript学习
+
+
 ### 问题反馈
 这是在开发中遇到,和日常的记录,如果有错误的地方,希望得到您的指点,
 邮箱17633884630@163.com
