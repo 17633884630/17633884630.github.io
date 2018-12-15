@@ -60,7 +60,10 @@ vh:相对于视窗的高度;视窗高度是100vh
  typeof str  //symbol
 2.$.extend() 函数将一个或者多个对象的内容合并到目标对象;
 3.对于event的使用:
-
+ event.target.nodeName  　　 //获取事件触发元素标签name
+ event.target.id　　　　　　　//获取事件触发元素id
+ event.target.className　　  //获取事件触发元素classname
+ event.target.innerHTML　　  //获取事件触发元素的内容
 ```
 
 ### 对于CSS,CSS3记录
