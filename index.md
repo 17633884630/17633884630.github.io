@@ -31,7 +31,9 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
 
 ### 项目记录
+```markdown
 
+```
 ### 移动端记录
 ```markdown
 1.rem,em,vw,vh,px
@@ -49,6 +51,7 @@ vh:相对于视窗的高度;视窗高度是100vh
   this.$router.push({name:'/',params:{data:data},query:{data:data}})   //链接显示query.data
 ```
 ### 问题反馈
-```markdown
-这是在开发中遇到,和日常的记录,如果有错误的地方,希望得到您的指点,邮箱17633884630@163.com
-```
+这是在开发中遇到,和日常的记录,如果有错误的地方,希望得到您的指点,
+邮箱17633884630@163.com
+您的不经意的指点就是我的学习的方向;
+
