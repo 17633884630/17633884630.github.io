@@ -11,9 +11,6 @@
 			</arguments>
 		</buildCommand>
 	</buildSpec>
-	<natures>
-		<nature>com.aptana.projects.webnature</nature>
-	</natures>
 	<filteredResources>
 		<filter>
 			<id>1544853571667</id>
