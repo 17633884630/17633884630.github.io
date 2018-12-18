@@ -1,10 +1,23 @@
-## 日常知识点记录
+## 日常知识点记录 || (常用)
 ```markdown
 1.template.default.import.funName = function(value){...}  
   funName使用 {|分隔符}
 2.var obj = {}
   obj['id_'+ id] = data.id	(存)
   let id = obj['id_'+ id]   (取)
+3.vuex
+  this.$store.state.data = data;(存)
+  this.$store.state.Cache(文件名).data (存)
+4.localStorage(存对象)
+  localStorage.setItem("data", JSON.stringify(data));(存)
+	JSON.parse(localStorage.getItem("data"));(取)
+5.对于{}怎么判断;
+  $.isEmptyObject({})	true;
+  $.isEmptyObject({name:"name"})	false;
+6.对于vue中拼接(动态)
+  :title="`主题导航(${name})`"  !!!v-bind
+  :title="'字符串' + xx"
+  :href="'/forum/list/?id=' + id"
 ```
 
 ### 项目记录
@@ -18,6 +31,13 @@
   render:(h,params)=>{
     return h('span',params.row == true ? '是' : '否')
   }
+1.3.在form表单中重置(重置表单)
+this.$refs['ruleForm'].resetFields(); //移除校验结果并重置字段值(element,iview ui)
+this.$refs['ruleForm'].clearValidate(); //移除校验结果(element ui^2.4.3)
+在外部：
+this.$nextTick(() => {
+   this.$refs['ruleForm'].resetFields()
+})
 2.简单的清空对象
  $.each(obj,(k,v)=>{
    obj[k] = null
@@ -40,6 +60,9 @@ vh:相对于视窗的高度;视窗高度是100vh
   this.$router.push({name:'/',params:{data:data}})  //链接上不显示
   this.$router.push({path:'/',query:{data:data}})   //链接显示
   this.$router.push({name:'/',params:{data:data},query:{data:data}})   //链接显示query.data
+	在跳转接受值时候注意:
+	this.$route.query  不是 this.$router.query 要注意多一个r!!!;
+	
 2.axios请求使用表单(form)提交
  let data = new FormData();
  data.append('data',data)
@@ -58,6 +81,9 @@ vh:相对于视窗的高度;视窗高度是100vh
  ES6引入了一种新的原始数据类型Symbol,表示独一无二.
  let str = Symbol();
  typeof str  //symbol
+ typeof null  //object
+ typeof undefined  //undefined
+ null == undefined //true
 2.$.extend() 函数将一个或者多个对象的内容合并到目标对象;
 3.对于event的使用:
  event.target.nodeName  　　 //获取事件触发元素标签name
@@ -72,6 +98,9 @@ vh:相对于视窗的高度;视窗高度是100vh
 textOverflow:ellipsis;
 whitSpace:nowrap;
 overflow:hidden;
+2.css去除ul,li,a下划线,默认样式
+list-style：none;
+text-decoration none;
 ```
 
 ### 问题反馈
@@ -102,3 +131,26 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 ```
 
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
+### 万般皆下品,唯有读书高
+```markdown
+1.javaScript是一种区分大小写的语言;
+2.html不区分大小写
+3.直接量:就是程序中直接显示除了的数据值;(数字,字符串,---)
+4.""; 空串 他的字符数是0; 
+5.字符串和数组一样都是以0开始进行索引;
+6.布尔值,在必要时会将true转换成1,false转换成0;
+7.在js中函数时一个真正的数据类型;
+8.JavaScript是无类型的
+9.JS中作用域有：全局作用域、函数作用域。没有块作用域的概念
+9.1.var 声明的变量是永久性的,可以修改,如果不初始化会输处undefined,不会报错
+    const定义的变量不可以修改
+    let是块级作用域,函数内部使用let顶以后,对函数外部无影响
+9.2.函数作用域(局部变量)作用域是局部性;在函数体内部,局部变量的优先级比同名的全局变量高;
+10.基本类型 (数值,布尔值,null,undefined) 在内存中具有固定大小
+11.引用类型 (对象,数组,函数)
+12.字符串特例(基本类型,引用类型)
+13.window对象代表浏览窗口,在客户端js中
+14.在执行一个函数时,函数参数和局部变量是作为调用对象的属性而存储的
+15.当函数引用一个变量时,首先检查的是调用对象(局部作用域),其次才检查全局对象(全局作用域)
+
+```
