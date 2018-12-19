@@ -189,5 +189,5 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
     var p = c.e() ---> 6.28318
 19.4.不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
     String.prototype.e = function(e){return e == this.charAt(this.length-1)} --->str.e(length-1) --->true
-
+19.5
 ```
