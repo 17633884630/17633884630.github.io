@@ -72,6 +72,8 @@ vh:相对于视窗的高度;视窗高度是100vh
   }
  }
  axios.post('/url',data,cofig)
+3.父子组件数据双向传递
+
 ```
 
 ### 对于JavaScript,JQuery记录
@@ -128,7 +130,7 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
-```
+``
 
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
 ### 万般皆下品,唯有读书高
@@ -152,5 +154,44 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 13.window对象代表浏览窗口,在客户端js中
 14.在执行一个函数时,函数参数和局部变量是作为调用对象的属性而存储的
 15.当函数引用一个变量时,首先检查的是调用对象(局部作用域),其次才检查全局对象(全局作用域)
+16.var str = (function(x){return x*x})(5) //str 25
+17.函数arguments.length
+callee属性:用来引用当前正在执行的函数;
+18.call()和apply()的第一个参数都是要调用的函数的对象;在函数体内这一参数是关键字this的值;
+call()第二参数:可以接收任意个参数;
+apply()第二参数:必须是一个数组,或者类数组;
+19.对象  key:value;
+19.1 for/in for(k in obj) k ---> key  obj[k] ---> value;
+```markdown
+19.2 构造函数
+function str(a,b){this.width = a;this.height = b;}
+var arr = new str(2,5);
+console.log(arr) ---> str {width: 2, height: 5} 
+console.log(arr.width) ---> 2
+构造函数通常没有返回值,它们只是初始化由this值传递进来的对象,并且什么也不返回.但是,构造函数可以返回一个对象值,如果这样做,被返回的对象就成了new表达式的值,在这种情况下,this值所引用的对象就被丢弃了
+function calculate(){return this.a * this.b}
+function str(a,b){
+  //初始化对象属性;
+  this.a = a;this.b = b;
+  //定义对象的方法
+  this.calculate = calculate
+}
+var arr = new str(2,3);
+console.log(arr.calculate()) ---> 6
+```
+19.3,继承 js中所有函数都有prototype属性;
+   每个对象都有原型对象,原型对象的所有属性是以它为原型的对象的属性,每个对象都继承原型对象的所有属性;
+```markdown
+function b(x,y,r){this.x = x;this.y = y;this.r = r;}
+new b(0,0,0)  --->创建并舍弃初始b对象
+b.prototype.pi = 3.14159		--->定义常量
+b.prototype.e = function(){return 2 * this.pi * this.r;}	--->定义方法
+b.prototype.t = function(){return  this.pi * this.r * this.r}
+var c = new b(0.0,0.0,1.0)  --->创建实例调用它的方法
+var a = c.t()  ---> 3.14159
+var p = c.e() ---> 6.28318
+19.4不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
+String.prototype.e = function(e){return e == this.charAt(this.length-1)} --->str.e(length-1) --->true
+```
 
 ```
