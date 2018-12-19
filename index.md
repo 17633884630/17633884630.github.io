@@ -133,7 +133,7 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 ```
 
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
-### 万般皆下品,唯有读书高
+### 读书笔记
 ```markdown
 1.javaScript是一种区分大小写的语言;
 2.html不区分大小写
@@ -156,7 +156,7 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 15.当函数引用一个变量时,首先检查的是调用对象(局部作用域),其次才检查全局对象(全局作用域)
 16.var str = (function(x){return x*x})(5) //str 25
 17.函数arguments.length
-  callee属性:用来引用当前正在执行的函数;
+    callee属性:用来引用当前正在执行的函数;
 18.call()和apply()的第一个参数都是要调用的函数的对象;在函数体内这一参数是关键字this的值;
     call()第二参数:可以接收任意个参数;
     apply()第二参数:必须是一个数组,或者类数组;
