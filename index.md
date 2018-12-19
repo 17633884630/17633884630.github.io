@@ -130,7 +130,7 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
-``
+```
 
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
 ### 万般皆下品,唯有读书高
@@ -162,7 +162,6 @@ call()第二参数:可以接收任意个参数;
 apply()第二参数:必须是一个数组,或者类数组;
 19.对象  key:value;
 19.1 for/in for(k in obj) k ---> key  obj[k] ---> value;
-```markdown
 19.2 构造函数
 function str(a,b){this.width = a;this.height = b;}
 var arr = new str(2,5);
@@ -178,10 +177,8 @@ function str(a,b){
 }
 var arr = new str(2,3);
 console.log(arr.calculate()) ---> 6
-```
 19.3,继承 js中所有函数都有prototype属性;
    每个对象都有原型对象,原型对象的所有属性是以它为原型的对象的属性,每个对象都继承原型对象的所有属性;
-```markdown
 function b(x,y,r){this.x = x;this.y = y;this.r = r;}
 new b(0,0,0)  --->创建并舍弃初始b对象
 b.prototype.pi = 3.14159		--->定义常量
@@ -190,8 +187,13 @@ b.prototype.t = function(){return  this.pi * this.r * this.r}
 var c = new b(0.0,0.0,1.0)  --->创建实例调用它的方法
 var a = c.t()  ---> 3.14159
 var p = c.e() ---> 6.28318
-19.4不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
+19.4.不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
 String.prototype.e = function(e){return e == this.charAt(this.length-1)} --->str.e(length-1) --->true
-```
-
+19.5.改造
+function b(x,y){this.x = x;this.y = y}
+b.prototype.e = function(){return this.x + this.y;}	--->定义方法
+b.prototype.t = function(){return  this.pi * this.r * this.r}
+var c = new b(0.0,0.0,1.0)  --->创建实例调用它的方法
+var a = c.t()  ---> 3.14159
+var p = c.e() ---> 6.28318
 ```
