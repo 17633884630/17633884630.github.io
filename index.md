@@ -10,7 +10,7 @@
   this.$store.state.Cache(文件名).data (存)
 4.localStorage(存对象)
   localStorage.setItem("data", JSON.stringify(data));(存)
-	JSON.parse(localStorage.getItem("data"));(取)
+  JSON.parse(localStorage.getItem("data"));(取)
 5.对于{}怎么判断;
   $.isEmptyObject({})	true;
   $.isEmptyObject({name:"name"})	false;
@@ -23,35 +23,35 @@
 ### 项目记录
 ```markdown
 1.使用iview-ui:
-   在iview中event时全局变量:使用直接在函数中
-  let e = event.target;
+    在iview中event时全局变量:使用直接在函数中
+   let e = event.target;
 1.1在style修改ui样式不起作用问题(可能)是在style中加了作用域scoped
-  可以使用 .red >>> ui 
+    可以使用 .red >>> ui 
 1.2在table中使用render
   render:(h,params)=>{
     return h('span',params.row == true ? '是' : '否')
   }
 1.3.在form表单中重置(重置表单)
-this.$refs['ruleForm'].resetFields(); //移除校验结果并重置字段值(element,iview ui)
-this.$refs['ruleForm'].clearValidate(); //移除校验结果(element ui^2.4.3)
+    this.$refs['ruleForm'].resetFields(); //移除校验结果并重置字段值(element,iview ui)
+    this.$refs['ruleForm'].clearValidate(); //移除校验结果(element ui^2.4.3)
 在外部：
-this.$nextTick(() => {
-   this.$refs['ruleForm'].resetFields()
-})
+   this.$nextTick(() => {
+      this.$refs['ruleForm'].resetFields()
+   })
 2.简单的清空对象
- $.each(obj,(k,v)=>{
-   obj[k] = null
- })
+   $.each(obj,(k,v)=>{
+     obj[k] = null
+   })
 ```
 
 ### 移动端记录
 ```markdown
 1.rem,em,vw,vh,px
-px:绝对单位;
-rem:是基于html元素的字体大小来决定;	html元素16px,10rem将等于160px
-em:根据使用它的元素大小决定;使用他的元素有18px,10em将等于 180px
-vw:相对于视窗的宽度;视窗宽度是100vw
-vh:相对于视窗的高度;视窗高度是100vh
+    px:绝对单位;
+    rem:是基于html元素的字体大小来决定;	html元素16px,10rem将等于160px
+    em:根据使用它的元素大小决定;使用他的元素有18px,10em将等于 180px
+    vw:相对于视窗的宽度;视窗宽度是100vw
+    vh:相对于视窗的高度;视窗高度是100vh
 ```
 
 ### VUE记录
@@ -64,14 +64,14 @@ vh:相对于视窗的高度;视窗高度是100vh
 	this.$route.query  不是 this.$router.query 要注意多一个r!!!;
 	
 2.axios请求使用表单(form)提交
- let data = new FormData();
- data.append('data',data)
- const cofig={
- headers:{
-  "Content-Type": "multipart/form-data"
-  }
- }
- axios.post('/url',data,cofig)
+   let data = new FormData();
+   data.append('data',data)
+   const cofig={
+   headers:{
+     "Content-Type": "multipart/form-data"
+    }
+   }
+   axios.post('/url',data,cofig)
 3.父子组件数据双向传递
 
 ```
@@ -79,7 +79,7 @@ vh:相对于视窗的高度;视窗高度是100vh
 ### 对于JavaScript,JQuery记录
 ```markdown
 1.js数据类型
-字符串(String),数值(Number),布尔值(Boolean),对象(Object),null,undefined;
+  字符串(String),数值(Number),布尔值(Boolean),对象(Object),null,undefined;
  ES6引入了一种新的原始数据类型Symbol,表示独一无二.
  let str = Symbol();
  typeof str  //symbol
@@ -97,12 +97,12 @@ vh:相对于视窗的高度;视窗高度是100vh
 ### 对于CSS,CSS3记录
 ```markdown
 1.文字超出隐藏
-textOverflow:ellipsis;
-whitSpace:nowrap;
-overflow:hidden;
+   textOverflow:ellipsis;
+   whitSpace:nowrap;
+   overflow:hidden;
 2.css去除ul,li,a下划线,默认样式
-list-style：none;
-text-decoration none;
+   list-style：none;
+   text-decoration none;
 ```
 
 ### 问题反馈
