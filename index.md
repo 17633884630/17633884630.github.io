@@ -57,6 +57,30 @@
    $.each(obj,(k,v)=>{
      obj[k] = null
    })
+3.数组去重排序
+   Array.from(new Set(xx)).sort((a,b)=>{return b - a})
+4.对象去重
+   var hash = {},str = []; 
+   str = str.reduce((item, next) =>{
+      hash[next.xx]  ? '' : hash[next.xx] = true && item.push(next);  ---> xx-->key
+      return item
+    }, [])
+5.数组合并
+   str.concat(str) --> str -->合并,拼接
+6.数组转字符串
+  join(',') ---> 默认可以填空
+7.字符串转数组
+  split('') --->默认填空会所有分割
+8.删除数据(项目)
+  let num = 0;
+  $.each(this.list, (d, i) => {
+    if(d.success){
+      num++;
+      if (num >= this.list.length) {
+       this.list.length = 0;
+      }
+     } 
+  })
 ```
 
 ### 移动端记录
@@ -103,6 +127,7 @@
         我是子组件的钱:
         <input type="text" v-model="inputs" class="inputName" >
         ---------------子组件------------------
+        :msgs ---> 父组件 ---> 子组件   @input  子组件 ---> 
         <looks ref="chlidren" :msgs="msgs" @input="input" :testOne="inputs"></looks>      
     </div>
   </template>
