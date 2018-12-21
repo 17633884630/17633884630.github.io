@@ -18,6 +18,21 @@
   :title="`主题导航(${name})`"  !!!v-bind
   :title="'字符串' + xx"
   :href="'/forum/list/?id=' + id"
+7.富文本框不获取焦点
+  E.prototype.initSelection = function(line) {}
+8.unescape(str) 函数
+  str --->要解码或反转义的字符串
+9.解决ztree拦截问题
+  $.ajaxSetup({
+    async: true,
+    type: 'GET',
+    dataType: 'json',
+    cache: false,
+    beforeSend: function(xhr) {
+      var login = $cookies.get("token");
+      xhr.setRequestHeader('Authorization', "Bearer " + login.access_token);
+    },
+  });
 ```
 
 ### 项目记录
@@ -73,7 +88,95 @@
    }
    axios.post('/url',data,cofig)
 3.父子组件数据双向传递
-
+  在vue中对于父子组件传值(v-bind,@on,$emit) ---> 
+  父组件:
+  <template>
+    <div class="hello">
+        ----------------父组件--------------------
+        我是父组件的钱:
+        <input type="text" v-model="msgs" class="inputName">
+        我是子组件的钱:
+        <input type="text" v-model="inputs" class="inputName" >
+        ---------------子组件------------------
+        <looks ref="chlidren" :msgs="msgs" @input="input" :testOne="inputs"></looks>      
+    </div>
+  </template>
+  export default {
+    components: { looks },
+    name: 'hello',
+    data() {
+        return {
+            // msgs:undefined,  ---> 值为undefind 可触发默认值
+            msgs: "给子组件100块钱",
+            inputs:""
+        };
+    },
+    methods: {
+        input(html) {
+            this.inputs = html  ----> 子传父组件的值
+        }
+    }
+  }
+  子组件:
+  <template>
+    <div>
+        {{names}}        
+        我在子组件中呀:
+        <input type="text" v-model="msgs" class="inputName">
+        {{msgs}}
+        我在子组件中呀:
+        <input type="text" class="inputName" v-model="testOne">
+    </div>
+</template>
+<script>
+export default {
+    name: 'look',
+    // props:['msg'],
+    props: {
+        //验证
+        // msgs:String,  //验证数据规格, ---> 字符串,数值,布尔值,函数,对象,数组,symbol(表示独一无二的值)--->原始类型的值  symbol()
+        // required: true
+        //默认值
+        // msgs:{
+        //  type: String,
+        //  default:"这是100块钱的默认值",
+        //  // default:()=>{return '函数返回--->这是100块钱的默认值'}
+        // }
+        // 自定义验证函数
+        // msgs: {
+        // type: String,
+        // validator: function(t) {
+        //     // 这个值必须匹配下列字符串中的一个
+        //     return t === 'fade' || t === 'slide'  ---> 这这测试有点问题 欢迎解答--->17633884630@163.com
+        // },
+        // defalut: 'slide'
+        // }
+        msgs: {
+            type: String,
+            required: true
+        },
+        testOne: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+            names: "我是子组件,我是直接在子组件里面写的值",
+        }
+    },
+    watch: {
+        msgs(cur, old) {
+            this.$emit('input', this.msgs) ---> 检测msgs的值的变化事实更新数据
+        }
+    },
+    mounted() {
+        this.$emit('input', this.msgs) ---> 初始话
+    }
+  }
+4.在vue中 v-for="item in obj" ---> 会报错key的错,
+  (报错之后可以直接写:key="item.xx") --> xx 不能为字符串即可
+  ---> 而不用v-for="(item,index) in obj" --> :key="index"
 ```
 
 ### 对于JavaScript,JQuery记录
@@ -97,8 +200,8 @@
 ### 对于CSS,CSS3记录
 ```markdown
 1.文字超出隐藏
-   textOverflow:ellipsis;
-   whitSpace:nowrap;
+   text-overflow:ellipsis;
+   white-space:nowrap;
    overflow:hidden;
 2.css去除ul,li,a下划线,默认样式
    list-style：none;
@@ -133,6 +236,11 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 ```
 
 有关更多细节，请参见[GitHub风味Markdown](https://guides.github.com/features/mastering-markdown/)。
+### 插件
+```markdown
+sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package ---> localiza
+                格式化插件    ---> HTML-CSS-JS prettify ---> Ctrl + Shift + H
+```
 ### 读书笔记
 ```markdown
 1.javaScript是一种区分大小写的语言;
@@ -190,4 +298,23 @@ Markdown是一种轻量级且易于使用的语法，用于为您的文章设计
 19.4.不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
     String.prototype.e = function(e){return e == this.charAt(this.length-1)} --->str.e(length-1) --->true
 19.5
+    function Complex(x,y){this.x = x;this.y = y;}
+    Complex.prototype.magnitude = function(){return Math.sqrt(this.x * this.x + this.y * this.y)}
+    Complex.prototype.negative = function(){return new Complex(-this.x,-this.y);}
+    Complex.prototype.toString = function(){return "{" + this.x + "," + this.y + "}"} 
+    Complex.prototype.valueOf = function(){return this.x;}
+    Complex.add  = function(a,b){
+      return new Complex( a.x + b.y , a.x + b.y)  ---> !!!2个参数;
+    }
+    Complex.subtract  = function(a,b){
+      return new Complex( a.x - b.x , a.y - b.y)
+    }
+    Complex.multiply  = function(a,b){
+      return new Complex( a.x * b.x - a.y * b.y ,  a.x * b.y - a.y * b.x)
+    }
+    var v = new Complex(5,6)
+    var b = new Complex(5,6)
+    console.log(v.toString(5,5))
+    console.log(Complex.add(v,b)) ---->调用需要new 2个数据;
+20.
 ```
