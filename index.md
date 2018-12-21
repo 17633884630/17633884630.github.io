@@ -86,9 +86,14 @@
      "Content-Type": "multipart/form-data"
     }
    }
-   axios.post('/url',data,cofig)
-3.父子组件数据双向传递
-  在vue中对于父子组件传值(v-bind,@on,$emit) ---> 
+   axios.post('/url',data,cofig)  
+3.在vue中 v-for="item in obj" ---> 会报错key的错,
+  (报错之后可以直接写:key="item.xx") --> xx 不能为字符串即可
+  ---> 而不用v-for="(item,index) in obj" --> :key="index"
+```
+### VUE ---> 关于Vue父子组件间传值解析
+```markdown
+在vue中对于父子组件传值(v-bind,@on,$emit) ---> 
   父组件:
   <template>
     <div class="hello">
@@ -125,9 +130,9 @@
         我在子组件中呀:
         <input type="text" class="inputName" v-model="testOne">
     </div>
-</template>
-<script>
-export default {
+  </template>
+  <script>
+  export default {
     name: 'look',
     // props:['msg'],
     props: {
@@ -172,11 +177,7 @@ export default {
         this.$emit('input', this.msgs) ---> 初始话
     }
   }
-4.在vue中 v-for="item in obj" ---> 会报错key的错,
-  (报错之后可以直接写:key="item.xx") --> xx 不能为字符串即可
-  ---> 而不用v-for="(item,index) in obj" --> :key="index"
 ```
-
 ### 对于JavaScript,JQuery记录
 ```markdown
 1.js数据类型
