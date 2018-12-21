@@ -119,11 +119,9 @@
   }
   子组件:
   <template>
-    <div>
-        {{names}}        
+    <div>     
         我在子组件中呀:
         <input type="text" v-model="msgs" class="inputName">
-        {{msgs}}
         我在子组件中呀:
         <input type="text" class="inputName" v-model="testOne">
     </div>
