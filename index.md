@@ -34,7 +34,6 @@
     },
   });
 ```
-
 ### 项目记录
 ```markdown
 1.使用iview-ui:
@@ -82,7 +81,14 @@
      } 
   })
 ```
-
+### es6 
+```markdown
+1.对象合并拷贝 
+    var obj = Object.assign({},obj1,obj2) 
+    Object.assign(obj,obj1,obj2) ---> obj
+1.1 jq对象合并
+    $.extend(true,obj,obj1)
+```
 ### 移动端记录
 ```markdown
 1.rem,em,vw,vh,px
