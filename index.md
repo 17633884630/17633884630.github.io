@@ -33,6 +33,10 @@
       xhr.setRequestHeader('Authorization', "Bearer " + login.access_token);
     },
   });
+10:http 和 https 
+  例如-->饿了么(element-ui)在本地出现--->无法访问 --->检查下是不是使用的是http(是的话) -->改成https 就可以正常访问
+  http ---> 网络协议
+  https --> 是以安全为目标的http通道,就是在http加入SSL层.
 ```
 ### 项目记录
 ```markdown
@@ -88,6 +92,22 @@
     Object.assign(obj,obj1,obj2) ---> obj
 1.1 jq对象合并
     $.extend(true,obj,obj1)
+2.对于定义变量:var,const,let 的区别
+    var --> 定义的变量,没有块的概念,可以跨块访问,不能跨函数访问;
+    let --> 定义的变量,只能在块作用域里访问,不能跨块访问,也不能跨函数访问
+    const > 定义常量,使用时必须初始化(必须赋值),只能在块作用域里访问,而且不能修改;
+    const obj --> Missing initializer in const declaration --> const声明中缺少初始化器(const定义必须初始化)
+    const obj = {};
+    var obj;let obj; --> Identifier 'obj' has already been declared --> 标识符“ob”已经声明(报错)
+    let str;
+    var str;--> Identifier 'str' has already been declared --> let,const定义的var都不能声明 -->不然会报错(xx已经声明)
+2.1.JS作用域 
+    全局变量的作用域:作用域是全局的,在代码的任何地方都是有定义的,然而函数的参数和局部变量只在函数体内有定义,另外局部变量的优先级要高于同名的全局变量,也就是说当局部变量与全局变量重名时,局部变量会覆盖全局变量;声明局部变量时一定要定义,不能解释权会将该变量当做全局对象window的属性;
+    函数作用域:(let块级作用域)--->在变量声明的代码段之外时不可见的,我们通常称为块级作用域;
+    链式调用的原理 ---> return this 
+    作用域的关键:函数的内部环境可以通过作用域链访问到所有的外部环境,但是外部环境却不可以访函数内部环境,这就是作用域的关键
+    闭包 --> 允许使用内部函数(即函数定义和函数表达式位于另一个函数的函数体内);而且,这些内部函数可以访问他们所在外部函数中声明的所有局部变量,参数和声明的其他内部函数,当其中一个这样的内部函数在包含他们的外部函数之外调用时,就会形成闭包.即内部函数会在外部函数返回后被执行,而当这个内部函数执行时,它仍然必须访问其外部函数的局部变量,参数以及其他内部函数.这些局部变量,参数和函数声明(最初时)值时外部函数返回时的值,但也会受到内部函数的影响; --->(锋利的jquery)
+
 ```
 ### 移动端记录
 ```markdown
@@ -156,7 +176,7 @@
   子组件:
   <template>
     <div>     
-        我在子组件中呀:
+        我在子组件中呀:{{names}}
         <input type="text" v-model="msgs" class="inputName">
         我在子组件中呀:
         <input type="text" class="inputName" v-model="testOne">
@@ -327,7 +347,7 @@ sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package 
     var p = c.e() ---> 6.28318
 19.4.不只是我们定义的类具有原型对象,像String等这样内部类用于具有原型对象;
     String.prototype.e = function(e){return e == this.charAt(this.length-1)} --->str.e(length-1) --->true
-19.5
+19.5 Complex --> Complex.prototype --> Object.prototype (查询路径)
     function Complex(x,y){this.x = x;this.y = y;}
     Complex.prototype.magnitude = function(){return Math.sqrt(this.x * this.x + this.y * this.y)}
     Complex.prototype.negative = function(){return new Complex(-this.x,-this.y);}
@@ -346,5 +366,42 @@ sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package 
     var b = new Complex(5,6)
     console.log(v.toString(5,5))
     console.log(Complex.add(v,b)) ---->调用需要new 2个数据;
-20.
+20.Object(所有内部类的超类,所有类都继承了Object的基本方法)
+21.关联数组对象:
+   例子: const obj = {a:1};
+   obj.a === obj['a']  -->ture
+   (在编写程序时,[]的属性名是一个字符串值(该值是动态的,可以在运行时改变),而不是一个标识符(它时情态的,在程序中必须对其进行硬编码))
+   关联数组:它是一种数据结构,允许你动态地将任意数组和任意字符串关联在一起  --> for/in,$.each -->把属性名从关联数组中抽取出来
+22.constructor(每个对象都具有 constructor 属性,它引用的是用来初始化该对象的构造函数)
+   function Complex(x,y){this.x=x;this.y=y} let con = new Complex(2,2) 
+   console.log(con.constructor) ---> Complex  --> con.constructor === Complex --> ture
+   验证对象局部的非继承的属性 (hasOwnProperty()):
+   --> con.hasOwnProperty("x") -->true --> 
+   --> con.hasOwnProperty("xx") -->true
+   验证调用对象是否是实际参数指定的对象的原型对象
+   --> Complex.prototype.isPrototypeOf(con) --> true
+23 [object object(class)]
+   class 是对象的内部类型,通常对应于该对象的构造函数名, ---> Array对象的class为 Array
+24. 数组Array(返回的新数组 --> 使用新的变量接受)
+   Array.reverse() --> 颠倒数组元素并返回新数组;
+   Array.join()    --> 数组转字符串
+   Array.sort()    --> 数组元素进行排序
+   Array.concat()  --> 合并数组
+   Array.slice(start,end)   --> 返回指定数组的一个片段  --> 方法可从已有的数组中返回选定的元素。
+   -->  参数值为负数(从数组的最后一个元素数起)
+
+
+
+
+   String.slice(start,end)  -->start:位置,end:下标 --> 提取字符串的片断，并在新的字符串中返回被提取的部分
+   String.concat(stringX,stringX,...,stringX)  --> 方法用于连接两个或多个字符串。
+   String.substring(start,stop) --> start 在string的位置; stop:位置   --> 方法用于提取字符串中介于两个指定下标之间的字符。
+   String.substr(start,length) --> start:下标 length:字串的数 --> 方法可在字符串中抽取从 start 下标开始的指定数目的字符
+   ---
+   String.charAt(index) ---> 方法可返回指定位置的字符
+   String.split(separator,howmany)  --> 方法用于把一个字符串分割成字符串数组。
+   ---
+   array对象方法:http://www.w3school.com.cn/jsref/jsref_obj_array.asp
+   string对象方法:http://www.w3school.com.cn/jsref/jsref_obj_string.asp
+
 ```
