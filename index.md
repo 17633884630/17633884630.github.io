@@ -37,6 +37,32 @@
   例如-->饿了么(element-ui)在本地出现--->无法访问 --->检查下是不是使用的是http(是的话) -->改成https 就可以正常访问
   http ---> 网络协议
   https --> 是以安全为目标的http通道,就是在http加入SSL层.
+11.函数分流(函数防抖)
+  函数防抖:就是多次触发事件后,事件处理函数只执行一次,而且是在事件触发操作停止的时候;
+ -->延迟处理函数,如果设定的时间到来之前,又一次触发了事件,就清除上一次的定时器;
+  obj.onmousemove = function () {
+    clearTimeout(myFun.timer);
+    myFun.timer = setTimeout(()=>{},50);
+  }
+  函数分流:函数分流的思想就是计时;
+12,import,export的使用;(在template里使用还没有研究);
+  定义变量:
+  -->export const str = "hello"  --> export const arr = ["arr","str","obj"] --> export const obj = {
+    str:"str",
+    arr:["arr","str","obj"],
+    obj:{}
+  }
+  引用变量:
+  import {str,arr,obj} from xx" -->xx(路径);
+13.数组删除指定的变量:
+  let arr = ["arr","str","obj"]
+   Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+   };
+   arr.remove("arr") --> arr -->["str","obj"]
 ```
 ### 项目记录
 ```markdown
@@ -56,6 +82,10 @@
    this.$nextTick(() => {
       this.$refs['ruleForm'].resetFields()
    })
+1.4,验证必须为数字
+   num:[
+     {type:"integer",required: true,message: "必须是数字"}
+   ]
 2.简单的清空对象
    $.each(obj,(k,v)=>{
      obj[k] = null
@@ -140,6 +170,21 @@
 3.在vue中 v-for="item in obj" ---> 会报错key的错,
   (报错之后可以直接写:key="item.xx") --> xx 不能为字符串即可
   ---> 而不用v-for="(item,index) in obj" --> :key="index"
+4.$.ajax提交数据是如果是  -- 表单提交时 -- 提交数组时,会自动在所设定的参数后面增加中括号 []
+   如str[]:1
+   原因:$.ajax会调用$.param序列化参数,$.param(obj,traditional) 默认的话，traditional为false;
+   --> 导致后端springboot中的@RequestParam获取不到参数。
+   解决办法:ajax请求时增加：traditional: true 就可以正常提交了
+5.v-for和v-if同时使用时,如果报错key-->undefined是;就把v-if和v-for不同级就可以;
+6.对象的取值方式:
+   var obj = {a:{b:1}};
+   obj.a.b -- 相等 -- obj["a"]["b"]
+   但是((如果不确定值,还没有初始化定义))的话:使用obj["a"]["b"]这种方式就取不到值了
+   -->解决办法
+   obj[item.model][item.objStr];
+   [item.model] --> 对象
+   [item.objStr] -->对象属性(xx自定义)
+
 ```
 ### VUE ---> 关于Vue父子组件间传值解析
 ```markdown
@@ -320,7 +365,7 @@ sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package 
     apply()第二参数:必须是一个数组,或者类数组;
 19.对象  key:value;
 19.1 for/in for(k in obj) k ---> key  obj[k] ---> value;
-19.2 构造函数
+19.2 构造函数 new Function("return str")  ---> ()
     function str(a,b){this.width = a;this.height = b;}
     var arr = new str(2,5);
     console.log(arr) ---> str {width: 2, height: 5} 
@@ -389,10 +434,15 @@ sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package 
    Array.concat()  --> 合并数组
    Array.slice(start,end)   --> 返回指定数组的一个片段  --> 方法可从已有的数组中返回选定的元素。
    -->  参数值为负数(从数组的最后一个元素数起)
-
-
-
-
+   Array.splice()
+   1.当splice(a) 一个值的时候是:
+   var str = [0,1,2,3,4,5,6,7,8,9];
+   var arr = str.splice(4) --> str:[0,1,2,3],arr:[4,5,6,7,8,9] 
+   2.当splice(a,b) 二个值的时候是: b--> 个数
+   var arr = str.splice(1,2) --> str:[0,3,4,5,6,7,8,9],arr:[1,2]
+   3.当splice(a,b,c) 三个值的时候是:
+   var arr = str.splice(1,0,2) --> 当b为0时,时直接添加2,b为1时,删除一个在添加2;
+   ---------
    String.slice(start,end)  -->start:位置,end:下标 --> 提取字符串的片断，并在新的字符串中返回被提取的部分
    String.concat(stringX,stringX,...,stringX)  --> 方法用于连接两个或多个字符串。
    String.substring(start,stop) --> start 在string的位置; stop:位置   --> 方法用于提取字符串中介于两个指定下标之间的字符。
@@ -403,5 +453,63 @@ sublime 中文插件 ---> Ctrl + Shift + P ---> package control:install package 
    ---
    array对象方法:http://www.w3school.com.cn/jsref/jsref_obj_array.asp
    string对象方法:http://www.w3school.com.cn/jsref/jsref_obj_string.asp
+25.push,pop,unshift,shift
+   push(向后添加),unshift(向头部添加),pop(删除后的),shift(删除头部的)
+26.toString() -->将数组转化成字符串
+   var str = [{name:"san"},true,5,[1,2],"字符串",null,undefined]
+   --> "[object Object],true,5,1,2,字符串,," 
+   --> toString() 不能把数组中的对象的值转换出来;
+   --> join();
+正则表达式:RegExp()
+1.正则的创建; 
+   let arr = new RegExp('s$')
+   let arr = /s$/
+2.在正则表达式中,具有特殊的含义的符号
+   ^ $ . * + ? = ! : | \ / {} [] () 
+   ^ --> 否定字符类
+   [] --> 匹配里面的值
+   ? --> 非贪婪的重复
+   | --> 分割(选择,匹配左或右边)
+   search()
+   replace() -->替换
+   match()
+   split()
+JavaScript数据类型间的转换:
+    1.显示转换:
+    1.1把一个值强制转换成布尔值: --> ! --> false  !! --> true;
+    1.2把数字-->字符串的转换
+    --> String()
+    2.字符串转数字
+    2.1Number();
+    2.2parseInt() --> 整数
+    2.2parseFloat() --> 整数,浮点数
+    3.引用,基本类型
+JavaScript在Web上展示;
+    1.window对象的引用:window和self
+    -->alert(),confirm()和prompt()获取用户的响应
+    -->close() 关闭窗口
+    -->open() 打开新窗口 --> 4个参数,默认是false,改为true能替换当前浏览器
+    2.每个window对象都包含一个document属性 -->document属性都有一个forms[]数组 -->每个from对象都有一个elements[]数组(数组包含出现在表单种的各种HTML表单元素)
+    3.window对象还包含一个frames[]数组--->每个窗口种还含有一个parent属性
+    4.事件驱动
+    5.JS延迟加载  
+    --> defer 属性
+    --> async 属性
+    --> 动态创建DOM属性
+    --> 使用jq的getScript()方法--> $.getScript("xx.js",function(){脚本加载完成});
+    --> 使用setTimeout 
+    --> 放在页面的底部最后加载
+    6.html语义化:正确的标签做正确的事请,能够便于开发者阅读和写出优雅的代码,同时让网络爬虫很好的理解
+    -->网络爬虫:按照一定的规则,自动的抓取万维网信息的程序或脚本
+    -->SEO优化
+    7.setTimeout(),clearTimeout()
+    8.navigator对象(包含web浏览器总体信息)
+    9.screen对象(提供用户显示器的大小,可以颜色数量的信息)
+    10.location对象(文档的URl)
+JavaScript的Document对象
+    表单:
+    type="hidden" --->隐藏
+    cookie:
+    生存期,可见性,安全性,
 
 ```
