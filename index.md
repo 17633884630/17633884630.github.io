@@ -63,6 +63,7 @@
     }
    };
    arr.remove("arr") --> arr -->["str","obj"]
+15:使用powerShell,cd之后使用 文件第一个字母 -->tab能自动补全路径;
 ```
 ### 项目记录
 ```markdown
@@ -511,5 +512,108 @@ JavaScript的Document对象
     type="hidden" --->隐藏
     cookie:
     生存期,可见性,安全性,
+Jq的学习:
+    加载:window.onload  $(()=>{}) --> onload 慢于 ready;
+  :has(selector)  --> 匹配含有选择器所匹配的元素的元素  $("div:has(p)");
+    从新定义jq --> jQuery.noConflict();  --> var $jq = jQuery.noConflict();
+  CSS选择器找到元素添加样式,jQuery选择找到元素添加行为;
+  jQuery对象转DOM对象
+  var domObj = $("div:has(p)")[0];
+  var domObj = $("div:has(p)").get(0);
+  find() -->在元素内匹配元素;
+
+  attr()  -->获取属性,设置属性		-->设置类名时,会把本身自带的覆盖掉
+  removeAttr()	-->删除属性
+
+  addClass()	-->添加类名					-->设置类名时,会追加类名
+  removeClass() -->删除类名
+  
+  toggleClass()	-->添加,删除类名  -->当类名存在时,即为删除,反之,即为添加;
+  hasClass()		-->判断是否含有个类名,有返回true,反之false
+  
+  getAttribute(); --> 获取属性
+  setAttribute(); --> 设置属性 
+  append()	-->向每个匹配的元素内部追加内容
+  after()	 --> 在每个匹配元素之后插入内容
+  before()	-->向每个匹配的元素之前插入内容
+  remove() --> 删除(所包含的所有后代节点将同时被删除)
+  detach()	--> 删除(但是保留所有的事件,附加的数据)
+  empty()		-->清空节点();
+  clone()   -->复制clone(true)复制绑定事件
+  
+  html()	类似于--> innerHTML
+  text()	类似于--> innerText
+  val()		类似于--> value
+  focus()	类似于--> onfocus()
+  blur()	类似于--> onblur()
+  this.defaultValue --> <input value="defaultValue"> -->默认的value值(注意this,指向当前的文本框);
+  
+    遍历:
+  	children() -->获取匹配元素的所有子元素的个数(值考虑子元素);
+  	next()		-->取得匹配元素后面紧邻的同辈元素
+  	prev()		-->取得匹配元素前面紧邻的同辈元素
+  	siblings()	-->取得匹配元素前后所有的同辈元素
+  	parent()		-->取得匹配元素的父级元素
+  	parents()		-->取得匹配元素的祖先元素(一直找到最处的节点);
+  	
+  DOM操作 --> 获取,设置
+  	css();
+  	height();
+  	width();
+  	offset()		-->获取元素在当前视窗的相对偏移
+  	position()	-->获取元素相对对于最近一个position样式属性设置为relative,absolute的祖父节点的相对偏移
+  	scrollTop(),scrollLeft()	--> 获取元素的滚动条距顶端,距左侧的距离
+  	is(":visible")
+  	is(":hidden")
+  	
+  Jquery对于事件
+  	$(document) --> $() -->不带参数时,默认参数时document
+  	事件绑定bind():
+  	hover(enter,leave) -->enter光标移动到元素上触发,光标移除元素触发leave
+  	toggle(fn1,fn2...fnN); -->模拟连续单击事件
+    toggleClass() --> 添加,取消类名
+  	事项冒泡:
+      会按照DOM的层次结构想水泡一样不断向上直至顶端(冒泡事件从下到上);事项捕获(是从上到下)
+    阻止事件冒泡 , 阻止默认行为(a链接跳转,表单提交)
+      event --> event.stopPropagation();
+      event --> event.preventDefault();
+      return false;
+      event.pageX,event.pageY --> 获取光标相对于页面的x,y坐标
+      event.which --> 搭配mousedown使用,获取鼠标的左,中,右键;
+                  --> 搭配keyup使用,获取键盘按键数
+      event.metaKey -->获取ctrl按键
+    移除事件
+      unbind() --> 移除所有事件 -->多个移除 unbind().unbind()...
+      bind('click.plugin') --> 移除多个 --> unbind(".plugin") !!! 点.
+      trigger(click!)  --> 不执行.plugin的click 
+      unbind(type,函数名) -->移除指定的函数 type --> click...
+      One() --> 只执行一次,之后就会销毁
+      off() --> 通常用于移除通过on()方法添加的事件处理程序 bind()也可以移除
+    模拟操作
+      trigger(type)  --> 直接执行事件
+      trigger(type,[data]) --> [data]要传递给事件处理函数的附加数据(多个事件,以第一个为主,附加数据先加载);
+      triggerHandler() -->不会执行浏览器默认操作
+      bind() --> 绑定两个事件,先执行第一个,后执行第二个
+      delegate() --> 为指定的元素,添加一个或者多个事件
+      undelegate()	-->删除使用delegate()
+    动画
+      hide() --> display:none
+      show() --> display:block --> show("slow") --动画600毫秒，normal,fast 400毫秒，200毫秒 -->show(1000);
+      fadeln() 
+      fadeOut() --> 改变透明度
+      slideUp()
+      slideDown() -->改变高度
+      fadeTo(600,0.2) --> 只改变不透明度
+      animate() --> 自定义动画
+      animate({left:"-=500px"},10000) --> -=,+=左,右 默认为右
+      animate({left:"-=500px"},10000，function(){}) --> -=,+=左,右 默认为右 -->function() 回调函数
+      animate().animate()
+      stop(bool,bool) -->停止动画
+      is(":animated") --> 判断动画
+      delay(time) --> 延迟动画
+      tiggle() --> 隐藏就显示,显示就隐藏  
+      slideToggle()	--> 隐藏就显示,显示就隐藏,改变高度
+      fadeToggle() --> 隐藏就显示,显示就隐藏,改变透明度
+    
 
 ```
