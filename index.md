@@ -187,6 +187,39 @@
    [item.objStr] -->对象属性(xx自定义)
 
 ```
+### 关于template模拟实现js和html代码分离
+```markdown
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title>artTemplate js和html模板分离</title>
+			<meta charset="UTF-8"/>
+			<script src="jquery.min.js"></script><script src="template-web.js" ></script>
+		</head>
+		<body><div id="content"></div></body>
+	</html>
+	<script>
+		$(function(){
+			var obj = {title: '标签1',list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他'],isAdmin:true};		
+			var html = $.post('test.html',function (data) {
+				var source = data.getElementById('test'); //获取文件 -->获取文件中的一个模板			
+		   		var render = template.compile(source.innerHTML);  //-->template.compile(data) data -->字符串
+		    	document.getElementById('content').innerHTML = render(obj); //render()将返回渲染结果。
+			})
+	})
+	test.html:
+	<script id="test" type="text/html">
+	 {{if isAdmin}}
+		<h1>{{title}}</h1>
+		<ul>
+			{{each list as value i}}
+			<li>索引 {{i + 1}} ：{{value}}</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+</script>
+</script>
+```
 ### VUE ---> 关于Vue父子组件间传值解析
 ```markdown
 在vue中对于父子组件传值(v-bind,@on,$emit) ---> 
