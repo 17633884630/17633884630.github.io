@@ -64,6 +64,8 @@
    };
    arr.remove("arr") --> arr -->["str","obj"]
 15:使用powerShell,cd之后使用 文件第一个字母 -->tab能自动补全路径;
+16：window.location.hash---跳转到hash值制定的具体页面
+   根据路由直接可以获取到最后的/xx
 ```
 ### 项目记录
 ```markdown
@@ -200,16 +202,15 @@
 	</html>
 	<script>
 		$(function(){
-			var obj = {title: '标签1',list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他'],isAdmin:true};		
-			var html = $.post('test.html',function (data) {
-				var source = data.getElementById('test'); //获取文件 -->获取文件中的一个模板			
-		   		var render = template.compile(source.innerHTML);  //-->template.compile(data) data -->字符串
-		    	document.getElementById('content').innerHTML = render(obj); //render()将返回渲染结果。
-			})
+			var obj = {title: '标签1',list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他'],isAdmin:true};
+			var html = $.get('3.html',function (data) {
+	   		var render = template.compile(data); 
+	    	document.getElementById('content').innerHTML = render(obj);
+		  },"html")
 	})
-	test.html:
-	<script id="test" type="text/html">
-	 {{if isAdmin}}
+</script>
+test.html:
+	{{if isAdmin}}
 		<h1>{{title}}</h1>
 		<ul>
 			{{each list as value i}}
@@ -217,8 +218,6 @@
 			{{/each}}
 		</ul>
 	{{/if}}
-</script>
-</script>
 ```
 ### VUE ---> 关于Vue父子组件间传值解析
 ```markdown
